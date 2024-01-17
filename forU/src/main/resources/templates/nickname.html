@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" th:href="@{/jystyle.css}">
+
+<html>
+<head>
+  <title>JY의 심리테스트</title>
+  <meta charset="utf-8" />
+</head>
+<body>
+	<div>
+		<img th:src="@{/img/반짝반짝.jpg}" height="20" alt="반짝반짝">
+		<span class="title">두근두근 심리테스트</span>
+		<img th:src="@{/img/반짝반짝.jpg}" height="20" alt="반짝반짝">
+	</div>
+	<br><br>	
+	<div>
+		닉네임을 입력하세요
+	</div>
+    
+    <form th:action="@{/foru/nickname}" method="post" th:object="${uForm}">
+		<input type="hidden" name="number" id="number" value="1" />
+           <input  type="text" id="nickname" name="nickname"></input>
+		<br>
+        <button type="submit" class="btn btn-primary">시작하기</button>
+    </form>    
+<br>	
+</body>
+</html>

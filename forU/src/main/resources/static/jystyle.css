@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'SDSamliphopangche_Outline';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: '모던굴림';
+    src: url('./fonts/210모던굴림B.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'NanumSquareRoundB';
+    src: url('./fonts/NanumSquareRoundB.ttf') format('truetype');
+}
+
+body .title{
+	font-family: 'SDSamliphopangche_Outline';
+}
+body {
+	font-family: '모던굴림';
+	text-align: center;
+}
+
+body .select{
+	height: 30px;
+	width: 150px;
+	margin: 5px;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" th:href="@{/jystyle.css}">
+
+<html>
+
+<head>
+	<title>JY의 심리테스트</title>
+	<meta charset="utf-8" />
+</head>
+
+<body>
+
+	<div>
+		<h5>Q<span th:text="${question.number}" />.
+			<span th:text="${sessionName}" />님이 <span th:text="${question.question}" />
+		</h5>
+	</div>
+	<form id="sendForm" th:action="@{/foru/page/1}" method="post">
+	<input type="hidden" name="qnum" id="qnum" th:value="${question.number}" />
+	<input type="hidden" name="answer" id="answer" value="" />
+	
+		<div>
+			<input type="button" value="사과" class="select" th:onclick="selection(1);"><br>
+			<input type="button" value="멜론" class="select" th:onclick="selection(2);"><br>
+			<input type="button" value="귤" class="select" th:onclick="selection(3);"><br>
+			<input type="button" value="망고" class="select" th:onclick="selection(4);"><br>
+		</div>
+	</form>
+</body>
+<script th:inline="javascript">
+
+
+	function selection(num) {
+		form = document.getElementById("sendForm");
+		answer = document.getElementById("answer");
+		answer.value = num;
+
+		form.submit();
+	};
+
+
+</script>
+
+</html>
