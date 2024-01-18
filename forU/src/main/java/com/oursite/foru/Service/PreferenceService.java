@@ -37,7 +37,7 @@ public class PreferenceService {
 		
 	
 		
-		return "d";
+		return "입력하시에";
 	}
 	
 	
