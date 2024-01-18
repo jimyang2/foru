@@ -19,4 +19,12 @@ public class UService {
     	this.uRepository.save(u);
     	
     }
+    
+    public U findU(String name) {
+    	U u = new U();
+    	u = uRepository.findByName(name);
+    	
+    	return u;
+    }
+    
 }

@@ -19,14 +19,18 @@
 	<input type="hidden" name="qnum" id="qnum" th:value="${question.number}" />
 	<input type="hidden" name="answer" id="answer" value="" />
 	
-		<div>
-			<input type="button" value="사과" class="select" th:onclick="selection(1);"><br>
-			<input type="button" value="멜론" class="select" th:onclick="selection(2);"><br>
-			<input type="button" value="귤" class="select" th:onclick="selection(3);"><br>
-			<input type="button" value="망고" class="select" th:onclick="selection(4);"><br>
-		</div>
+	<div th:each="a : ${answer}" >
+		<input type="button" th:value="${a.question}" class="select" th:onclick="selection([[${a.anum}]])"><br>
+		
+	</div>
+	
+		
+		
 	</form>
+	
+
 </body>
+
 <script th:inline="javascript">
 
 

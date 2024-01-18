@@ -1,5 +1,7 @@
 package com.oursite.foru.Controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,7 +14,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.oursite.foru.Domain.Preference;
 import com.oursite.foru.Domain.Questions;
+import com.oursite.foru.Domain.U;
 import com.oursite.foru.Domain.UForm;
+import com.oursite.foru.Service.PreferenceService;
 import com.oursite.foru.Service.QuestionsService;
 import com.oursite.foru.Service.UService;
 
@@ -29,6 +33,7 @@ public class DefaultController {
 
 	private final UService uService;
 	private final QuestionsService questionsService;
+	private final PreferenceService preferenceService;
 
 	@GetMapping("/foru/main")
 	public String main() {
@@ -50,13 +55,24 @@ public class DefaultController {
 	public String setTest(HttpServletRequest request) {
 		System.out.println("dkssud");
 		
-		int num = Integer.parseInt(request.getParameter("qnum"))+1;
+		// 세션으로 U 검색
+		HttpSession session = request.getSession(false);
+		String sessionName = (String) session.getAttribute("sessionName");
+	    U u = new U();
+	    u = this.uService.findU(sessionName);
 		
-	    System.out.println(request.getParameter("answer"));	
-	    System.out.println(request.getParameter("qnum"));	
+	    // 답변 저장
+		int num = Integer.parseInt(request.getParameter("qnum"));
+	    this.preferenceService.create(u, num, request.getParameter("answer"));
+	    
+	    // 다음 페이지로 이동
 	    
 	    
+	    if (num == 3) {
+	    	return "redirect:/foru/page/result";
+	    }
 	    
+	    num = num + 1;
 	    
 		return "redirect:/foru/page/"+String.valueOf(num);
 	}	
@@ -75,6 +91,7 @@ public class DefaultController {
 	@GetMapping("/foru/page/{number}")
 	public String getPage1(Model model, HttpServletRequest request, @PathVariable("number") int number) {
 		System.out.println("들어왔엉");
+		
 		HttpSession session = request.getSession(false);
 		String sessionName = (String) session.getAttribute("sessionName");
 		model.addAttribute("sessionName", sessionName);
@@ -82,8 +99,25 @@ public class DefaultController {
 		Questions q = this.questionsService.getQuestionbyNumber(number);
 		model.addAttribute("question",q);
 		
+		List<Questions> a = this.questionsService.getAnswerListbyNumber(number);
+		model.addAttribute("answer", a);
+		
 		
 		return "page";
 	}
 
+	
+	@GetMapping("foru/result")
+	public String Last(HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
+		String sessionName = (String) session.getAttribute("sessionName");
+	    U u = new U();
+	    u = this.uService.findU(sessionName);
+	    
+	    
+	    
+		return "result";
+	}
+	
+	
 }

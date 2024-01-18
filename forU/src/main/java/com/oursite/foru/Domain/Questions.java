@@ -17,10 +17,14 @@ public class Questions {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(unique = true)
+	@Column(unique = false)
 	private int number;
 	
-	private String Question;
+	private String question;
+	
+	private String QA;
+	
+	private String anum;
 	
 	
 }
