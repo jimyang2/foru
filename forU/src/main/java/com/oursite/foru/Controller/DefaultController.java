@@ -1,6 +1,9 @@
 package com.oursite.foru.Controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.DoubleStream;
+import java.util.stream.Stream;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,11 +23,12 @@ import com.oursite.foru.Service.PreferenceService;
 import com.oursite.foru.Service.QuestionsService;
 import com.oursite.foru.Service.UService;
 
+import groovyjarjarantlr4.runtime.IntStream;
 import jakarta.servlet.http.HttpServletRequest;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
-
+import jakarta.websocket.server.PathParam;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -50,34 +54,7 @@ public class DefaultController {
 		return "nickname";
 	}
 	
-	// 나중에 삭제하세요 (+수정)
-	@PostMapping("/foru/page/{number}")
-	public String setTest(HttpServletRequest request) {
-		System.out.println("dkssud");
-		
-		// 세션으로 U 검색
-		HttpSession session = request.getSession(false);
-		String sessionName = (String) session.getAttribute("sessionName");
-	    U u = new U();
-	    u = this.uService.findU(sessionName);
-		
-	    // 답변 저장
-		int num = Integer.parseInt(request.getParameter("qnum"));
-	    this.preferenceService.create(u, num, request.getParameter("answer"));
-	    
-	    // 다음 페이지로 이동
-	    
-	    
-	    if (num == 3) {
-	    	return "redirect:/foru/page/result";
-	    }
-	    
-	    num = num + 1;
-	    
-		return "redirect:/foru/page/"+String.valueOf(num);
-	}	
 	
-
 	@PostMapping("/foru/nickname")
 	public String goFirstpage(@Valid UForm uForm, BindingResult bindingResult, HttpServletRequest request) {
 		this.uService.create(uForm.getNickname());
@@ -87,10 +64,11 @@ public class DefaultController {
 
 		return "redirect:/foru/page/1";
 	}
-
+	
 	@GetMapping("/foru/page/{number}")
 	public String getPage1(Model model, HttpServletRequest request, @PathVariable("number") int number) {
 		System.out.println("들어왔엉");
+		System.out.println(number);
 		
 		HttpSession session = request.getSession(false);
 		String sessionName = (String) session.getAttribute("sessionName");
@@ -104,16 +82,55 @@ public class DefaultController {
 		
 		
 		return "page";
-	}
+	}	
 
-	
-	@GetMapping("foru/result")
-	public String Last(HttpServletRequest request) {
+	@PostMapping("/foru/page/{number}")
+	public String setTest(HttpServletRequest request,@PathVariable("number") int number) {
+		System.out.println("dkssud");
+		System.out.println(number);
+		
+		// 세션으로 U 검색
 		HttpSession session = request.getSession(false);
 		String sessionName = (String) session.getAttribute("sessionName");
 	    U u = new U();
 	    u = this.uService.findU(sessionName);
 	    
+		Questions answerresult = this.questionsService.getAnswer(number,request.getParameter("answer"));
+	    this.preferenceService.create(u, answerresult);
+	    
+	    // 다음 페이지로 이동
+	    if (number == 3) {
+	    	System.out.println("마지막페이지로");
+	    	return "redirect:/foru/result";
+	    }
+	    
+	    number = number + 1;
+	    
+		return "redirect:/foru/page/"+String.valueOf(number);
+	}	
+	
+
+
+	
+	@GetMapping("foru/result")
+	public String Last(Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
+		String sessionName = (String) session.getAttribute("sessionName");
+	    U u = new U();
+	    u = this.uService.findU(sessionName);
+	    
+	    List<Preference> resultList = new ArrayList<>();
+	    resultList = this.preferenceService.showResult(u);
+
+	    // 점수
+	    Stream<Preference> preferenceStream = resultList.stream();
+	    DoubleStream scoreStream = preferenceStream.mapToDouble(preference -> Double.parseDouble(preference.getScore()));
+	    double sum1 = scoreStream.sum();
+	    model.addAttribute("result", sum1);
+	    System.out.println(sum1);
+	    
+	    // 답변리스트
+	    model.addAttribute("user", u);
 	    
 	    
 		return "result";

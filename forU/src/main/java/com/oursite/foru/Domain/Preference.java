@@ -1,10 +1,14 @@
 package com.oursite.foru.Domain;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,9 +23,11 @@ public class Preference {
 	
 	@ManyToOne
 	private U user;
-	
-	private int qnum;
+
+	private int  qnum;
 	
 	private String answer;
+	
+	private String score;
 
 }

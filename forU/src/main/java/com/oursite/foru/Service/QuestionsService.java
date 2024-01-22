@@ -24,7 +24,9 @@ public class QuestionsService {
 		return this.questionsRepository.findByQAAndNumberOrderById("A", number);
 	}
 	
-
+	public Questions getAnswer(int number,String anum) {
+		return this.questionsRepository.findByNumberAndQAAndAnum(number,"A",anum);
+	}
 	
 	
 	

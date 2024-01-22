@@ -6,6 +6,7 @@ import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
 
 import com.oursite.foru.Domain.Preference;
+import com.oursite.foru.Domain.Questions;
 import com.oursite.foru.Domain.U;
 import com.oursite.foru.Repository.PreferenceRepository;
 
@@ -17,27 +18,23 @@ public class PreferenceService {
 
 	private final PreferenceRepository preferenceRepository;
 	
-	public void create(U u, int qnum, String answer ) {
+	public void create(U u, Questions q ) {
 		Preference p = new Preference();
 		
 		p.setUser(u);
-		p.setQnum(qnum);
-		p.setAnswer(answer);
+		p.setQnum(q.getNumber());
+		p.setAnswer(q.getQuestion());
+		p.setScore(q.getScore());
 		
 		this.preferenceRepository.save(p); 
 	}
 	
-	public String showResult(U user) {
+	public List<Preference> showResult(U user) {
 		U u = new U();
 		u = user;
 		
-		List<Preference> answerList = this.preferenceRepository.findByUserOrderByQnum(u);
 		
-		
-		
-	
-		
-		return "입력하시에";
+		return this.preferenceRepository.findByUserOrderByQnum(u);
 	}
 	
 	

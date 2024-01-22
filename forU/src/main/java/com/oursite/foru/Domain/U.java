@@ -28,7 +28,7 @@ public class U {
 	private String name;
 	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
-	private List<Preference> answer;
+	private List<Preference> answerList;
 
 	
 }
