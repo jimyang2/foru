@@ -1,3 +1,4 @@
+
 package com.oursite.foru.Service;
 
 import java.util.List;
@@ -28,6 +29,11 @@ public class QuestionsService {
 		return this.questionsRepository.findByNumberAndQAAndAnum(number,"A",anum);
 	}
 	
+	public List<Questions> getAllAnswer(String score){
+		return this.questionsRepository.findByScoreOrderById(score);
+	}	
+	
 	
 	
 }
+

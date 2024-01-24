@@ -1,3 +1,4 @@
+
 package com.oursite.foru.Service;
 
 import java.util.List;
@@ -37,5 +38,10 @@ public class PreferenceService {
 		return this.preferenceRepository.findByUserOrderByQnum(u);
 	}
 	
+	// 그냥 테스트겸
+	public List<Preference> showResultAndAnswer(U user) {
+		
+		return this.preferenceRepository.findByUser(user);
+	}
 	
 }

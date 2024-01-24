@@ -1,3 +1,4 @@
+
 @font-face {
     font-family: 'SDSamliphopangche_Outline';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff') format('woff');
@@ -39,4 +40,9 @@ table td {
 
 .button {
 	font-size : 300px;
+}
+
+.resulttable{
+	margin: auto;
+	border: 1px;
 }

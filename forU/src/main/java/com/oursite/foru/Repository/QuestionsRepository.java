@@ -1,3 +1,4 @@
+
 package com.oursite.foru.Repository;
 
 import java.util.List;
@@ -11,5 +12,7 @@ public interface QuestionsRepository extends JpaRepository<Questions, Integer> {
 		Questions findByNumberAndQA(int number,String QA);
 		Questions findByNumberAndQAAndAnum(int number, String QA, String Anum);
 		List<Questions> findByQAAndNumberOrderById(String QA,int number);
+		List<Questions> findByScoreOrderById(String score);
 		
 }
+

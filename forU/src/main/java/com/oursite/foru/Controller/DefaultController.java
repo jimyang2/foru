@@ -1,3 +1,4 @@
+
 package com.oursite.foru.Controller;
 
 import java.util.ArrayList;
@@ -12,8 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import com.oursite.foru.Domain.Preference;
 import com.oursite.foru.Domain.Questions;
@@ -23,13 +23,15 @@ import com.oursite.foru.Service.PreferenceService;
 import com.oursite.foru.Service.QuestionsService;
 import com.oursite.foru.Service.UService;
 
-import groovyjarjarantlr4.runtime.IntStream;
+
 import jakarta.servlet.http.HttpServletRequest;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
-import jakarta.websocket.server.PathParam;
+
 import lombok.RequiredArgsConstructor;
+
+
 
 @RequiredArgsConstructor
 @Controller
@@ -130,11 +132,26 @@ public class DefaultController {
 	    System.out.println(sum1);
 	    
 	    // 답변리스트
-	    model.addAttribute("user", u);
 	    
+	    List<Preference> result = this.preferenceService.showResult(u);
+	    List<Questions> answer = this.questionsService.getAllAnswer("1");
+	   
+	    model.addAttribute("result", result);
+	    model.addAttribute("answer", answer);
 	    
+	    // 그냥 테스트 겸
+//	    for(Preference p : ResultAndAnswer) {
+//	    	System.out.println(p.getId()+"\t"+p.getUser()+"\t"+p.getQnum()+"\t"+p.getAnswer()
+//	    	+"\t"+p.getScore()+"\t\t"+p.getClass().getName());  // 모르겠음 Join 해서 Questions을 어케가져오는지 ㅠ
+//	    	System.out.println("안녕");
+//	    }
+	    
+	    model.addAttribute("test",result);
+	    
+	    System.out.println("왜안돼");
 		return "result";
 	}
 	
 	
 }
+
