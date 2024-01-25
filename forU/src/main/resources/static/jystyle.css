@@ -13,22 +13,78 @@
     font-family: 'NanumSquareRoundB';
     src: url('./fonts/NanumSquareRoundB.ttf') format('truetype');
 }
-
-body .title{
-	font-family: 'SDSamliphopangche_Outline';
+@font-face {
+    font-family: '나눔스퀘어';
+    src: url('./fonts/NANUMSQUARER.TTF') format('truetype');
 }
-body {
-	font-family: '모던굴림';
-	text-align: center;
+
+
+
+body, html {
+	font-family: '나눔스퀘어';
+	font-size : 22px;
+	background: lightblue;
+	margin:auto;
+
+}
+
+.middle {
+    position: absolute; 
+    left: 50%; top:50%;
+    transform: translate(-50%,-50%); 
+    text-align: center;
+
+
+}
+
+.circle{
+	background : white;
+    min-width: 330px;
+    padding: 30px 0px;
+    border-radius: 50%;
+}
+
+.space{
+	padding-top: 10px;
+	font-weight: bold;
+}
+
+.seq{
+	font-size: 20px;
 }
 
 body .select{
 	height: 50px;
 	width: 300px;
 	margin: 5px;
-	font-size : 20px;
-	font-family: '모던굴림';
+	font-size : 30px;
+	font-family: '나눔스퀘어';
 }
+
+@media (max-width: 600px) {
+body .select{
+	height: 50px;
+	width: 300px;
+	margin: 5px;
+	font-size : 20px;
+	font-family: '나눔스퀘어';
+}
+}
+
+body .title{
+	font-family: '모던굴림';
+	font-size : 40px;
+}
+
+@media (max-width: 600px) {
+	body .title{
+		font-family: '모던굴림';
+		font-size : 25px;
+	}
+}
+
+
+
 table {
     margin-left:auto; 
     margin-right:auto;
@@ -36,6 +92,30 @@ table {
 
 table td {
     height: "20";
+    text-align: center;
+}
+
+
+
+/* 버튼 CSS */
+@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+
+.w-btn {
+    position: relative;
+    border: none;
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+}
+
+.w-btn-green {
+    background-color: #77af9c;
+    color: black;
 }
 
 .button {
@@ -46,3 +126,7 @@ table td {
 	margin: auto;
 	border: 1px;
 }
+
+
+
+

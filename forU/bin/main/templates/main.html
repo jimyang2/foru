@@ -1,26 +1,27 @@
-
 <!DOCTYPE html>
 <link rel="stylesheet" type="text/css" th:href="@{/jystyle.css}">
-
 <html>
 <head>
-  <title>JY의 심리테스트</title>
-  <meta charset="utf-8" />
+  	<meta charset="UTF-8">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">	
+	<title>JY의 심리테스트</title>
 </head>
 <body>
-	<div>
+	<div class="middle circle">
+		<p>
 		<img th:src="@{/img/반짝반짝.jpg}" height="20" alt="반짝반짝">
 		<span class="title">두근두근 심리테스트</span>
 		<img th:src="@{/img/반짝반짝.jpg}" height="20" alt="반짝반짝">
+		</p>
+		<div>심리테스트를 시작합니다</div>
+		<br>
+		<div class="buttons">	
+		 	<button class="w-btn w-btn-green" type="button" th:onclick="|location.href='@{/foru/nickname}'|" >START!</button> 
+		</div>
+
 	</div>
-	<br><br>
 	
-	<div>심리테스트를 시작합니다</div>
-	 
-	<br>
-	
- <button type="button" th:onclick="|location.href='@{/foru/nickname}'|" >START!</button> 
- 
 </body>
 
 </html>

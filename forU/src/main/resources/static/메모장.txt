@@ -6,3 +6,9 @@
 
 가정
 1. 답이 하나라는 가정(답은 무조건 1)
+
+
+
+아이폰 13 미니
+Viewport Width	375px  360
+Viewport Height	812px  780

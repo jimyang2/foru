@@ -15,7 +15,7 @@ Insert into questions(Number,ANum,QA,Question,score) values (2,'5','A','시간�
 
 Insert into questions(Number,ANum,QA,Question,score) values (3,'','Q','지금 가장 하고싶은 것은 무엇일까요?','Y');
 Insert into questions(Number,ANum,QA,Question,score) values (3,'1','A','이거 개발 완료하기','0');
-Insert into questions(Number,ANum,QA,Question,score,seq) values (3,'2','A','자기','1','잠이 건강에 주요하답니다(???)');
+Insert into questions(Number,ANum,QA,Question,score,seq) values (3,'2','A','자기','1','잠이 건강에 중요하답니다(???)');
 Insert into questions(Number,ANum,QA,Question,score) values (3,'3','A','밥먹기','0');
 Insert into questions(Number,ANum,QA,Question,score) values (3,'4','A','공부','0');
 Insert into questions(Number,ANum,QA,Question,score) values (3,'5','A','시간초과','0');

@@ -4,17 +4,20 @@
 <html>
 
 <head>
+  	<meta charset="UTF-8">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">		
 	<title>JY의 심리테스트</title>
-	<meta charset="utf-8" />
 </head>
 
 <body>
-ddddd
-	<div>
-		<h2>Q<span th:text="${question.number}" />.
+
+	<div class="middle">
+		<p><b>
+			Q<span th:text="${question.number}" />.
 			<span th:text="${sessionName}" />님이 <span th:text="${question.question}" />
-		</h2>
-	</div>
+		</b></p>
+	
 	<form id="sendForm" th:action="@{/foru/page/{pathParam}(pathParam=${question.number})}" method="post">
 	<input type="hidden" name="qnum" id="qnum" th:value="${question.number}" />
 	<input type="hidden" name="answer" id="answer" value="" />
@@ -32,7 +35,7 @@ ddddd
 		
 		
 	</form>
-	
+	</div>
 
 </body>
 
@@ -79,7 +82,7 @@ ddddd
     function myTimer() {
       count = count - 1; // 타이머 선택 숫자에서 -1씩 감산함(갱신되기 때문)
 
-      document.getElementById("countdown").innerHTML = "완료까지 <b>" + count + "</b>초 남았습니다.";
+      document.getElementById("countdown").innerHTML = "⏰완료까지 <b>" + count + "</b>초⏰";
       if (count == 0) {
         clearInterval(time); // 시간 초기화
         alert("시간이 완료되었습니다.");

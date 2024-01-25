@@ -4,56 +4,47 @@
 
 <html>
 <head>
-  <title>JY의 심리테스트</title>
-  <meta charset="utf-8" />
+  	<meta charset="UTF-8">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">		
+    <title>JY의 심리테스트</title>
 </head>
 <body>
 
 
-<br><br>
-
-<span>
-	
+<div>
+	<br>
  <table>
     <thead>
-        <tr >
-            <th>문제번호</th>
+            <th>문제</th>
             <th>선택한답</th>
             <th>정답</th>
-            <th>O/X</th>
-            <th>이유</th>            
-        </tr>
+            <th>O/X</th>          
     </thead>
     
     <tbody>
 		<div th:each="num: ${#numbers.sequence(0,2)}">		
 			<tr>	
 		        <div th:object="${result.get(num)}" >
-		            <td th:text="*{qnum}"></td>
-		            <td th:text="*{answer}"></td>
+		            <td class="space" th:text="*{qnum}"></td>
+		            <td class="space" th:text="*{answer}"></td>
 		        </div>
 		        
 		 		<div th:object="${answer.get(num)}" >
-		            <td th:text="*{question}"></td>
-		            <td th:if="${#strings.equals({test.get(num).answer}, {answer.get(num).question})}" style="font-weight: bold; color: blue;">O</td>
-		            <td th:unless="${#strings.equals({test.get(num).answer}, {answer.get(num).question})}" style="font-weight: bold; color : red">X</td>
-		            <td th:text="*{seq}"></td>
-		        </div> 
-			</tr>     
+		            <td class="space" th:text="*{question}"></td>
+		            <td class="space" th:if="${#strings.equals({test.get(num).answer}, {answer.get(num).question})}" style="font-weight: bold; color: blue;">O</td>
+		            <td class="space" th:unless="${#strings.equals({test.get(num).answer}, {answer.get(num).question})}" style="font-weight: bold; color : red">X</td>
+		     </tr> 
+		     <tr>
+					<td> </td>
+		            <td class="seq" colspan="3" th:text="${answer.get(num).seq}"></td>
+		     </tr>
+		        </div>    
 		</div>     
     </tbody>
     
 </table>
-
-<br><br>
-
-
-
-
-</span>
-
-<br><br>
-<br><br>
+</div>
 
 
 </body>
