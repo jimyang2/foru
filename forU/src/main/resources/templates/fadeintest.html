@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>AOS Animation</title> 
+  	<meta charset="UTF-8">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">	        
+        <!-- AOS 라이브러리 불러오기-->
+        <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"> 
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+    </head>
+    <style>
+        * {
+		  box-sizing: border-box;
+		}
+		
+		.item {
+		  width: 200px;
+		  height: 400px;
+		  margin: 50px auto;
+		  padding-top: 75px;
+		  background: #ccc;
+		  text-align: center;
+		  color: #FFF;
+		  font-size: 3em;
+		}
+		
+		.main_image {
+		    position: relative;
+		}	
+
+		.img{
+			position: absolute;top: 0;left: 0;
+			width: 100%;
+			height: 300px;
+		}
+		
+	
+		
+		.main_image_text {
+	    position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    transform: translate( -50%, -50% );
+	    color: white;
+	font-family: '나눔스퀘어';
+	font-size : 22px;	    
+	 	}
+
+    </style>
+    <body>
+        <!-- AOS 스크립트 초기화 -->
+        <script> 
+            AOS.init(); 
+        </script>
+        <!-- //AOS 스크립트 초기화 -->
+        <div class="main_image">
+        	<img class="img" th:src="@{/img/밤하늘그라데이션2.JPG}"  alt="밤하늘">
+        	<h5 class="main_image_text">저는 글씨입니다.</h5>
+        </div> 
+        
+        <br>
+        <p>
+        <div  aos="fade-up" data-aos-offset="0" data-aos-easing="linear" data-aos-duration="3000">
+            <div class="item" data-aos="fade-up">1</div>
+            <div class="item" data-aos="fade-up">1</div>
+            
+			<div  class="grad" data-aos="fade-down-left"> <img th:src="@{/img/곰돌이.png}" width="300" height="280" alt="반짝반짝"> </div>
+            <div  class="grad" data-aos="fade-down-left"> <img th:src="@{/img/반짝반짝.jpg}" height"100" alt="반짝반짝"> </div>
+            <!-- //애니메이션 객체 요소 -->
+            <div class="item" data-aos="fade-up">1</div>
+        </div>
+</p>
+    </body>
+</html>
+.
