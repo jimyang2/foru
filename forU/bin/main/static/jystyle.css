@@ -17,6 +17,10 @@
     font-family: '나눔스퀘어';
     src: url('./fonts/NANUMSQUARER.TTF') format('truetype');
 }
+@font-face {
+    font-family: '나눔손글씨동화또박';
+    src: url('./fonts/나눔손글씨동화또박.ttf') format('truetype');
+}
 
 
 

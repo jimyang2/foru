@@ -57,9 +57,11 @@
 	for (i = 0 ; i < totalQnum ; i++ ){
 		var td = document.createElement('td');
 		if( i + 1 <= qnum.value){
-			td.innerHTML = "<img src='../../img/검정꽉찬하트.png' height='20' alt='검은하트'>";
+			<!--td.innerHTML = "<img src='../../img/검정꽉찬하트.png' height='20' alt='검은하트'>";-->
+			td.innerHTML = "♥";
 		}else{
-			td.innerHTML = "<img src='../../img/검정빈하트.png' height='20' alt='검은하트'>";
+
+			td.innerHTML = "♡";
 		}
 		tbody.appendChild(td);
 	}
@@ -82,7 +84,7 @@
     function myTimer() {
       count = count - 1; // 타이머 선택 숫자에서 -1씩 감산함(갱신되기 때문)
 
-      document.getElementById("countdown").innerHTML = "⏰완료까지 <b>" + count + "</b>초⏰";
+      document.getElementById("countdown").innerHTML = "⏰완료까지 <b>" + count + "</b>초";
       if (count == 0) {
         clearInterval(time); // 시간 초기화
         alert("시간이 완료되었습니다.");

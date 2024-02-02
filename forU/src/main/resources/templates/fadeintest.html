@@ -11,8 +11,13 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
     </head>
     <style>
+@font-face {
+    font-family: '나눔손글씨동화또박';
+    src: url('./fonts/나눔손글씨동화또박.ttf') format('truetype');
+}		
         * {
 		  box-sizing: border-box;
+		  font-family: '나눔손글씨동화또박';
 		}
 		
 		.item {
@@ -44,8 +49,8 @@
 	    left: 50%;
 	    transform: translate( -50%, -50% );
 	    color: white;
-	font-family: '나눔스퀘어';
-	font-size : 22px;	    
+		font-family: '나눔손글씨동화또박';
+		font-size : 42px;	    
 	 	}
 
     </style>
@@ -57,10 +62,12 @@
         <!-- //AOS 스크립트 초기화 -->
         <div class="main_image">
         	<img class="img" th:src="@{/img/밤하늘그라데이션2.JPG}"  alt="밤하늘">
-        	<h5 class="main_image_text">저는 글씨입니다.</h5>
+        	<h5 class="main_image_text">옛날옛적에 먕먕나라에<br>지냥공주가 살고있었어요</h5>
         </div> 
         
         <br>
+        <br>
+        <br><br>
         <p>
         <div  aos="fade-up" data-aos-offset="0" data-aos-easing="linear" data-aos-duration="3000">
             <div class="item" data-aos="fade-up">1</div>
